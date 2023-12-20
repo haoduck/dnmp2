@@ -15,6 +15,6 @@ RUN if [ -z "${INSTALL_APPS##*,certbot,*}" ]; then \
         apk add --no-cache certbot; \
     fi
 
-RUN apk add --no-cache nginx-mod-http-lua
+RUN apk update && apk add --no-cache nginx-mod-http-lua
 
 WORKDIR /www
