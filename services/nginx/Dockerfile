@@ -1,6 +1,6 @@
 ARG NGINX_VERSION
 
-FROM nginx:1.25.3
+FROM nginx:1.19
 
 # 安装依赖
 RUN apt-get update \
