@@ -9,12 +9,12 @@ RUN apk update && \
         git
 
 # 下载并编译 ngx_brotli 模块
-RUN git clone https://github.com/google/ngx_brotli.git && \
-    cd ngx_brotli && \
-    git submodule update --init && \
-    ./autogen.sh && \
-    ./configure && \
-    make
+# RUN git clone https://github.com/google/ngx_brotli.git && \
+#     cd ngx_brotli && \
+#     git submodule update --init && \
+#     ./autogen.sh && \
+#     ./configure && \
+#     make
 
 # 下载并编译 nginx-dav-ext-module 模块
 RUN git clone https://github.com/arut/nginx-dav-ext-module.git
@@ -35,7 +35,7 @@ RUN cd /usr/src/nginx && \
         --with-http_ssl_module \
         --with-openssl \
         --add-module=/usr/src/nginx-dav-ext-module \
-        --add-module=/usr/src/ngx_brotli \
+        # --add-module=/usr/src/ngx_brotli \
         --add-module=/usr/src/ngx-fancyindex \
         --add-module=/usr/src/lua-nginx-module \
         --with-http_lua_module && \
