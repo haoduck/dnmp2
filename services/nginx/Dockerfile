@@ -20,10 +20,7 @@ RUN apk update && \
 RUN git clone https://github.com/arut/nginx-dav-ext-module.git
 
 # 下载并编译 ngx-fancyindex 模块
-RUN git clone --depth=1 https://github.com/aperezdc/ngx-fancyindex.git && \
-    cd ngx-fancyindex && \
-    auto/configure --with-http_realip_module && \
-    make
+RUN git clone --depth=1 https://github.com/aperezdc/ngx-fancyindex.git
 
 # 下载并编译 Nginx Lua 模块
 RUN git clone https://github.com/openresty/lua-nginx-module.git
