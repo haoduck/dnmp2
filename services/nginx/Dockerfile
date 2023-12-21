@@ -53,3 +53,19 @@ RUN ./configure --prefix=${NGINX_ROOT} --with-ld-opt="-Wl,-rpath,${LUAJIT_LIB}" 
 RUN make -j2
 RUN make install
 RUN ln -s ${NGINX_ROOT}/sbin/nginx /usr/local/sbin/nginx
+
+# ***** MISC *****
+WORKDIR ${WEB_DIR}
+EXPOSE 80
+EXPOSE 443
+
+# ***** CLEANUP *****
+RUN rm -rf /nginx-${VER_NGINX}
+RUN rm -rf /LuaJIT-${VER_LUAJIT}
+RUN rm -rf /${NGINX_DEVEL_KIT}
+RUN rm -rf /${LUA_NGINX_MODULE}
+# TODO: Uninstall build only dependencies?
+# TODO: Remove env vars used only for build?
+
+# This is the default CMD used by nginx:1.9.2 image
+CMD ["nginx", "-g", "daemon off;"]
