@@ -24,8 +24,8 @@ RUN apk --no-cache add tzdata \
 
 
 # Fix: https://github.com/docker-library/php/issues/1121
-RUN apk add --no-cache --repository http://${CONTAINER_PACKAGE_URL}/alpine/v3.13/community/ gnu-libiconv=1.15-r3
-ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
+RUN apk add --no-cache --repository http://${CONTAINER_PACKAGE_URL:-dl-cdn.alpinelinux.org}/alpine/v3.13/community/ gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
 
 
 # Install composer and change it's cache home
