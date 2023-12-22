@@ -10,8 +10,8 @@ ARG CONTAINER_PACKAGE_URL
 #     && sed -i "s/security.debian.org/${CONTAINER_PACKAGE_URL}\/debian-security/g" /etc/apt/sources.list \
 #     && apt-get update
 # 更改软件源为阿里云
-RUN echo "deb https://mirrors.aliyun.com/debian-archive/debian/ jessie main non-free contrib" > /etc/apt/sources.list \
-    && echo "deb-src https://mirrors.aliyun.com/debian-archive/debian/ jessie main non-free contrib" >> /etc/apt/sources.list \
+RUN echo "deb http://mirrors.aliyun.com/debian-archive/debian/ jessie main non-free contrib" > /etc/apt/sources.list \
+    && echo "deb-src http://mirrors.aliyun.com/debian-archive/debian/ jessie main non-free contrib" >> /etc/apt/sources.list \
     && apt-get update
 
 COPY ./extensions /tmp/extensions
