@@ -3,18 +3,14 @@ FROM ${ALPINE_VERSION}
 
 ARG TZ
 ARG CONTAINER_PACKAGE_URL
-ARG NGINX_INSTALL_APPS
-
-ENV INSTALL_APPS=",${NGINX_INSTALL_APPS},"
 
 RUN if [ "${CONTAINER_PACKAGE_URL}" != "" ] ; then sed -i "s/dl-cdn.alpinelinux.org/${CONTAINER_PACKAGE_URL}/g" /etc/apk/repositories ; fi
 
-RUN apk update && apk add --no-cache nginx nginx-mod-http-lua
+RUN apk update && apk add --no-cache nginx nginx-mod-http-lua certbot
 
-RUN if [ -z "${INSTALL_APPS##*,certbot,*}" ]; then \
-        echo "---------- Install certbot ----------"; \
-        apk add --no-cache certbot; \
-    fi
+RUN apk --no-cache add tzdata \
+    && cp "/usr/share/zoneinfo/$TZ" /etc/localtime \
+    && echo "$TZ" > /etc/timezone
 
 WORKDIR /www
 
