@@ -8,7 +8,7 @@ RUN if [ "${CONTAINER_PACKAGE_URL}" != "" ] ; then sed -i "s/dl-cdn.alpinelinux.
 
 RUN apk update && apk add --no-cache nginx nginx-mod-http-lua certbot certbot-nginx
 
-# ENV TZ=${TZ}
+ENV TZ=${TZ}
 
 RUN echo $TZ
 
