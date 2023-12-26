@@ -8,9 +8,11 @@ RUN if [ "${CONTAINER_PACKAGE_URL}" != "" ] ; then sed -i "s/dl-cdn.alpinelinux.
 
 RUN apk update && apk add --no-cache nginx nginx-mod-http-lua certbot certbot-nginx
 
-RUN apk --no-cache add tzdata \
-    && cp "/usr/share/zoneinfo/$TZ" /etc/localtime \
-    && echo "$TZ" > /etc/timezone
+RUN set -eux; \
+    apk --no-cache add tzdata; \
+    cp "/usr/share/zoneinfo/$TZ" /etc/localtime; \
+    echo "$TZ" > /etc/timezone
+
 
 WORKDIR /www
 
