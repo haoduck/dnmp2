@@ -9,8 +9,7 @@ RUN apk update && apk add --no-cache nginx nginx-mod-http-lua certbot certbot-ng
 
 ENV TZ='Asia/Shanghai'
 
-RUN set -eux; \
-    apk --no-cache add tzdata; \
+RUN apk --no-cache add tzdata; \
     cp "/usr/share/zoneinfo/$TZ" /etc/localtime; \
     echo "$TZ" > /etc/timezone
 
