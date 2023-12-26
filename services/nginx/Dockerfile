@@ -17,4 +17,4 @@ RUN set -eux; \
 
 WORKDIR /www
 
-CMD ["nginx", "-g", "daemon off;"]S
+CMD ["nginx", "-g", "daemon off;"]
